@@ -1,11 +1,8 @@
 .snackbar {
     visibility: hidden;
     min-width: 250px;
-    background-color: #7c7c7c;
-    color: #fff;
-    text-align: center;
     border-radius: 8px;
-    padding: 16px;
+    padding: 12px;
     position: fixed;
     z-index: 1;
     left: 50%;
@@ -13,6 +10,21 @@
     font-size: 17px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.snackbar>span {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.snackbar>svg {
+    height: 100%;
+    aspect-ratio: 1;
 }
 
 .snackbar.show {

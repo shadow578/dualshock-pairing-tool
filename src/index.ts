@@ -78,10 +78,10 @@ window.onload = () => {
             }
 
             // show success message
-            snackbar.show("Connected to controller");
+            snackbar.show("success", "Connected to controller");
         } catch (error) {
             setButtons(false);
-            snackbar.show(error.message);
+            snackbar.show("error", error.message);
         }
     };
 
@@ -98,9 +98,9 @@ window.onload = () => {
             page.macTextInput.value = mac.toString();
 
             // show success message
-            snackbar.show("MAC address fetched successfully");
+            snackbar.show("success", "MAC address fetched successfully");
         } catch (error) {
-            snackbar.show(error.message);
+            snackbar.show("error", error.message);
         }
 
         page.getPairedButton.disabled = false;
@@ -117,7 +117,7 @@ window.onload = () => {
             // so the user knows everything was parsed as expected
             page.macTextInput.value = mac.toString();
         } catch (error) {
-            snackbar.show(error.message);
+            snackbar.show("error", error.message);
             return;
         }
 
@@ -126,9 +126,9 @@ window.onload = () => {
             await pairTool.setPairedMac(mac);
 
             // show success message
-            snackbar.show("MAC address set successfully");
+            snackbar.show("success", "MAC address set successfully");
         } catch (error) {
-            snackbar.show(error.message);
+            snackbar.show("error", error.message);
         }
     };
 
