@@ -13,16 +13,23 @@
         <p id="tagline">A tool to view and change the paired bluetooth MAC address of a Sony DualShock controller </p>
 
         <div class="card" id="not_supported_container">
+            <h2>Not Supported</h2>
             <p>
                 Sorry, your browser is not supported.
                 <br>
                 Please use a browser that supports
                 <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebHID_API">WebHID</a>,
                 such as the latest versions of Chrome or Edge.
+
+                <noscript>
+                    <br>
+                    <strong>Note:</strong> JavaScript is disabled, but is required for this tool.
+                </noscript>
             </p>
         </div>
 
         <div class="card" id="connect_container" style="display: none;">
+            <h2>Connect Controller</h2>
             <p>
                 First, connect your controller to your computer via USB cable.
                 <br>
@@ -36,13 +43,35 @@
         </div>
 
         <div class="card" id="pair_container" style="display: none;">
-            <label for="mac_input">The Controller is currently paired to the Bluetooth MAC Address:</label>
-            <input type="text" id="mac_input" name="mac_input" />
+            <h2>View and Change Bluetooth MAC Address</h2>
+            <p>
+                The controller is now connected.
+                <br>
+                You can now view and change the paired Bluetooth MAC address in the textbox below.
+                <br>
+                Use the buttons to read or write the MAC address to the controller.
+            </p>
 
+            <div id="mac_input_container">
+                <input type="text" id="mac_input" name="mac_input" style="border: 0;" placeholder="00:00:00:00:00:00" />
 
-            <div id="pair_button_container">
-                <button id="get_paired_button">Read Paired Controller</button>
-                <button id="set_paired_button">Set Paired Controller</button>
+                <button id="get_paired_button" title="Read Bluetooth MAC Address from Controller">
+                    <!-- icons/sync.svg -->
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#5f6368">
+                        <path
+                            d="M160-160v-80h110l-16-14q-52-46-73-105t-21-119q0-111 66.5-197.5T400-790v84q-72 26-116 88.5T240-478q0 45 17 87.5t53 78.5l10 10v-98h80v240H160Zm400-10v-84q72-26 116-88.5T720-482q0-45-17-87.5T650-648l-10-10v98h-80v-240h240v80H690l16 14q49 49 71.5 106.5T800-482q0 111-66.5 197.5T560-170Z" />
+                    </svg>
+                </button>
+
+                <button id="set_paired_button" title="Write Bluetooth MAC Address to Controller">
+                    <!-- icons/send.svg -->
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                        fill="#5f6368">
+                        <path
+                            d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
