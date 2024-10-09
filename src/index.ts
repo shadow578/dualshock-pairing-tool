@@ -139,7 +139,9 @@ window.onload = () => {
     if (macParam) {
         // parse MAC address from query parameter before setting it
         // to make sure it's valid and to avoid xss attacks
-        const mac = MACAddress.fromString(macParam);
-        page.macTextInput.value = mac.toString();
+        try {
+            const mac = MACAddress.fromString(macParam);
+            page.macTextInput.value = mac.toString();
+        } catch (_) { }
     }
 }
