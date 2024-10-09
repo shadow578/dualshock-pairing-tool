@@ -1,6 +1,57 @@
+<!DOCTYPE html>
 <html>
-    <head></head>
-    <body>
-        Hello, World!
-    </body>
+
+<head>
+    <title>DualShock Pairing Tool</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="snackbar.css">
+</head>
+
+<body>
+    <div>
+        <h1 id="title">DualShock Pairing Tool</h1>
+        <p id="tagline">A tool to view and change the paired bluetooth MAC address of a Sony DualShock controller </p>
+
+        <div class="card" id="not_supported_container">
+            <p>
+                Sorry, your browser is not supported.
+                <br>
+                Please use a browser that supports
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebHID_API">WebHID</a>,
+                such as the latest versions of Chrome or Edge.
+            </p>
+        </div>
+
+        <div class="card" id="connect_container" style="display: none;">
+            <p>
+                First, connect your controller to your computer via USB cable.
+                <br>
+                Then, press the button below.
+                <br>
+                A dialog will appear asking for permission to connect to the controller.
+                Select the controller from the list and confirm.
+            </p>
+
+            <button id="connect_button">Connect to Controller</button>
+        </div>
+
+        <div class="card" id="pair_container" style="display: none;">
+            <label for="mac_input">The Controller is currently paired to the Bluetooth MAC Address:</label>
+            <input type="text" id="mac_input" name="mac_input" />
+
+
+            <div id="pair_button_container">
+                <button id="get_paired_button">Read Paired Controller</button>
+                <button id="set_paired_button">Set Paired Controller</button>
+            </div>
+        </div>
+
+        <div id="snackbar"></div>
+    </div>
+
+    <script type="module">
+        import "./index.ts"
+    </script>
+</body>
+
 </html>
