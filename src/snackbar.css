@@ -1,4 +1,4 @@
-#snackbar {
+.snackbar {
     visibility: hidden;
     min-width: 250px;
     background-color: #7c7c7c;
@@ -15,7 +15,7 @@
     transform: translateX(-50%);
 }
 
-#snackbar.show {
+.snackbar.show {
     visibility: visible;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }

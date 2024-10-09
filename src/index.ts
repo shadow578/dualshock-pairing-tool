@@ -1,5 +1,6 @@
 import { PairTool } from "./lib/PairTool";
 import { MACAddress } from "./lib/MACAddress";
+import { Snackbar } from "./snackbar";
 
 window.onload = () => {
     // get page element references
@@ -11,7 +12,6 @@ window.onload = () => {
         getPairedButton: document.getElementById("get_paired_button")! as HTMLButtonElement,
         setPairedButton: document.getElementById("set_paired_button")! as HTMLButtonElement,
         macTextInput: document.getElementById("mac_input")! as HTMLInputElement,
-        snackbar: document.getElementById("snackbar")!,
     }
 
     // ensure all elements were found
@@ -21,11 +21,8 @@ window.onload = () => {
         }
     }
 
-    function showSnackbar(message: string, timeout = 3000) {
-        page.snackbar.textContent = message;
-        page.snackbar.classList.add("show");
-        setTimeout(() => page.snackbar.classList.remove("show"), timeout);
-    }
+    // create snackbar instance
+    const snackbar = new Snackbar();
 
     function setButtons(isConnected: boolean) {
         page.connectButton.disabled = isConnected;
@@ -68,10 +65,10 @@ window.onload = () => {
             }
 
             // show success message
-            showSnackbar("Connected to controller");
+            snackbar.show("Connected to controller");
         } catch (error) {
             setButtons(false);
-            showSnackbar(error.message);
+            snackbar.show(error.message);
         }
     };
 
@@ -88,9 +85,9 @@ window.onload = () => {
             page.macTextInput.value = mac.toString();
 
             // show success message
-            showSnackbar("MAC address fetched successfully");
+            snackbar.show("MAC address fetched successfully");
         } catch (error) {
-            showSnackbar(error.message);
+            snackbar.show(error.message);
         }
 
         page.getPairedButton.disabled = false;
@@ -107,7 +104,7 @@ window.onload = () => {
             // so the user knows everything was parsed as expected
             page.macTextInput.value = mac.toString();
         } catch (error) {
-            showSnackbar(error.message);
+            snackbar.show(error.message);
             return;
         }
 
@@ -116,9 +113,9 @@ window.onload = () => {
             await pairTool.setPairedMac(mac);
 
             // show success message
-            showSnackbar("MAC address set successfully");
+            snackbar.show("MAC address set successfully");
         } catch (error) {
-            showSnackbar(error.message);
+            snackbar.show(error.message);
         }
     };
 
