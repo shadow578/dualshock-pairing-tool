@@ -4,7 +4,7 @@
     "description": "",
     "scripts": {
         "start": "parcel src/index.html",
-        "build": "parcel build src/index.html --no-source-maps",
+        "build": "parcel build src/index.html --no-source-maps --public-url 'https://shadow578.github.io/dualshock-pairing-tool/'",
         "predeploy": "rm -rf dist/ && npm run build",
         "deploy": "gh-pages -d dist"
     },
