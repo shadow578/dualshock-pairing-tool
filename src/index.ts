@@ -11,6 +11,7 @@ window.onload = () => {
         connectButton: document.getElementById("connect_button")! as HTMLButtonElement,
         getPairedButton: document.getElementById("get_paired_button")! as HTMLButtonElement,
         setPairedButton: document.getElementById("set_paired_button")! as HTMLButtonElement,
+        macInputContainer: document.getElementById("mac_input_container")!,
         macTextInput: document.getElementById("mac_input")! as HTMLInputElement,
     }
 
@@ -23,6 +24,18 @@ window.onload = () => {
 
     // create snackbar instance
     const snackbar = new Snackbar();
+
+    // validate MAC input while typing
+    const validateMacInput = () => {
+        try {
+            MACAddress.fromString(page.macTextInput.value);
+            page.macInputContainer.classList.remove("mac_invalid");
+        } catch (_) {
+            page.macInputContainer.classList.add("mac_invalid");
+        }
+    }
+    page.macTextInput.onkeyup = validateMacInput;
+    page.macTextInput.onchange = validateMacInput;
 
     function setButtons(isConnected: boolean) {
         page.connectButton.disabled = isConnected;
