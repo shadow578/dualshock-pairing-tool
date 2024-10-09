@@ -7,6 +7,11 @@ export class MACAddress {
             throw new Error("Invalid MAC address");
         }
 
+        // each part must be 1 or 2 characters long, and must contain only hex characters
+        if (parts.some(part => !/^[0-9a-fA-F]{1,2}$/.test(part))) {
+            throw new Error("Invalid MAC address");
+        }
+
         const bytes = parts.map(part => parseInt(part, 16));
         return new MACAddress(new Uint8Array(bytes));
     }
